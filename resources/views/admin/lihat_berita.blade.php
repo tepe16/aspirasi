@@ -38,9 +38,9 @@
                                  <td><img src="/images/{{ $a->foto }}" height="200" width="200" alt="" /></td>
                                  <td>{{ $a->ket_berita }}</td>
                                  <td>
-                                    <form action="{{ route('admin.destroy',$a->id_berita) }}" method="POST">
+                                    <form action="{{ route('admins.destroy',$a->id_berita) }}" method="POST">
 
-                                        <a class="btn btn-primary" href="{{ route('admin.edit',$a->id_berita) }}">Edit</a>
+                                        <a class="btn btn-primary" href="{{ route('admins.edit',$a->id_berita) }}">Edit</a>
 
                                         @csrf
                                         @method('DELETE')

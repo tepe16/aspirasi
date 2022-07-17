@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\KontakController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,14 +18,28 @@ use App\Http\Controllers\NewsController;
 
 
 
-#admin
+#users
+Route::get('admin', [UserController::class, 'index_login']);
+
 Route::post('login', [UserController::class, 'login_action'])->name('login.action');
 Route::get('tambah_user', [UserController::class, 'tambah_user'])->name('tambah_user');
-Route::resource('admin', BeritaController::class);
+Route::get('lihat_user', [UserController::class, 'lihat_user'])->name('admin.lihat_user');
+Route::post('hapus', [UserController::class, 'destroy'])->name('admin.destroy');
+Route::get('admin/{id}', [UserController::class, 'edit'])->name('admin.edit');
+Route::put('admin/{id}', [UserController::class, 'update'])->name('admin.update');
+Route::delete('admin/{id}', [UserController::class, 'destroy'])->name('admin.destroy');
+Route::post('proses_tambah_user', [UserController::class, 'proses_tambah_user'])->name('proses_tambah_user');
+Route::get('logout', [UserController::class, 'logout'])->name('logout');
+#berita
+Route::resource('admins', BeritaController::class);
 
-#depan
+
+
+#home depan
 Route::get('/', function () {
     return view('depan.index');
 });
-
+#news
 Route::resource('depan', NewsController::class);
+#contact
+Route::get('index_contact', [KontakController::class, 'index_contact'])->name('index_contact');

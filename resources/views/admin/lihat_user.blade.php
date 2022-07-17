@@ -7,7 +7,7 @@
      <div class="col-lg-12">
          <div class="panel panel-default">
              <div class="panel-heading">
-                 Data Aspirasi
+                 Data User
              </div>
              <!-- /.panel-heading -->
              <div class="panel-body">
@@ -21,26 +21,36 @@
                          <thead>
                              <tr>
                                  <th>No</th>
-                                 <th>Nama Mahasiswa</th>
-                                 <th>Nama Berita</th>
-                                 <th>Tanggal Aspirasi</th>
-                                 <th>Keterangan Aspirasi</th>
+                                 <th>Username</th>
+                                 <th>Nama Pengguna</th>
+                                 <th>Action</th>
                              </tr>
                          </thead>
                          <tbody>
-                         @foreach ($news as $index => $a)
+                         @foreach ($user as $index => $a)
 
                              <tr class="odd gradeX">
                                  <td>{{ $index + 1 }}</td>
-                                 <td>{{ $a->nama_mahasiswa }}</td>
-                                 <td>{{ $a->nama_berita }}</td>
-                                 <td>{{ $a->tgl_aspirasi }}</td>
-                                 <td>{{ $a->ket_aspirasi }}</td>
+                                 <td>{{ $a->username }}</td>
+                                 <td>{{ $a->name }}</td>
+
+                                 <td>
+                                    <form action="{{ route('admin.destroy',$a->user_id) }}" method="POST">
+
+                                        <a class="btn btn-primary" href="{{ route('admin.edit',$a->user_id) }}">Edit</a>
+
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+
+                                 </td>
                              </tr>
                         @endforeach
                          </tbody>
                      </table>
-
+                     {!! $user->links() !!}
                  </div>
 
              </div>

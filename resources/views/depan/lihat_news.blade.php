@@ -24,7 +24,7 @@
 				<div class="single-latest-news">
 					<a href="{{ route('depan.show', $a->id_berita) }}"><img src="/images/{{ $a->foto }}" height="300" width="345"></a>
 					<div class="news-text-box">
-						<h3><a href="#">{{$a->nama_berita}}</a></h3>
+						<h3><a href="{{ route('depan.show', $a->id_berita) }}">{{$a->nama_berita}}</a></h3>
 						<p class="blog-meta">
 							<span class="author"><i class="fas fa-user"></i> Admin</span>
 							<span class="date"><i class="fas fa-calendar"></i> {{$a->tgl_berita }}</span>

@@ -12,7 +12,7 @@
              <div class="panel-body">
                  <div class="row">
                      <div class="col-lg-12">
-                         <form role="form" action="{{ route('admin.store')}}" method="POST" enctype="multipart/form-data">
+                         <form role="form" action="{{ route('admins.store')}}" method="POST" enctype="multipart/form-data">
                              @csrf
                              <div class="form-group">
                                  <label>Nama Berita</label>

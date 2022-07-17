@@ -55,7 +55,7 @@
 							<ul>
                                 <li class="current-list-item"><a href="#">Home</a></li>
 								<li><a href="{{ route('depan.index') }}">News</a></li>
-								<li><a href="#">Contact</a></li>
+								<li><a href="{{ route('index_contact') }}">Contact</a></li>
 								<li>
 
 								</li>

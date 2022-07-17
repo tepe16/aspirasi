@@ -26,7 +26,13 @@ class NewsController extends Controller
      */
     public function create()
     {
-        //
+
+        $news=DB::table('komentar_aspirasi')
+                      ->join('berita', 'komentar_aspirasi.id_berita', '=', 'berita.id_berita')
+                      ->get();
+
+
+        return view('admin.lihat_aspirasi')->with('news', $news);
     }
 
     /**

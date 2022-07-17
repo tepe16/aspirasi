@@ -55,7 +55,7 @@
 							<ul>
                                 <li class="current-list-item"><a href="#">Home</a></li>
 								<li class="current-list-item"><a href="{{route ('depan.index')}}">News</a></li>
-								<li class="current-list-item"><a href="#">Contact</a></li>
+								<li class="current-list-item"><a href="{{route ('index_contact')}}">Contact</a></li>
 								<li>
 								</li>
 							</ul>

@@ -7,12 +7,12 @@
      <div class="col-lg-9">
          <div class="panel panel-default">
              <div class="panel-heading">
-                 Form Tambah User
+                 Form Edit User
              </div>
              <div class="panel-body">
                  <div class="row">
                      <div class="col-lg-12">
-                        @if ($errors->any())
+                          @if ($errors->any())
                              <div class="alert alert-danger">
                                  <strong>Whoops!</strong> There were some problems with your input.<br><br>
                                  <ul>
@@ -22,31 +22,28 @@
                                  </ul>
                              </div>
                          @endif
-                         <form role="form" action="{{ route('proses_tambah_user') }}" method="post">
+                         <form role="form" action="{{route ('admin.update', $user->user_id)}}" method="POST">
                              @csrf
-                             <div class="form-group">
-                                 <label>Nama User</label>
-                                 <input class="form-control" type="text" name="name" placeholder="Masukan Nama">
-                             </div>
+                             @method('PUT')
                              <div class="form-group">
                                  <label>Username</label>
-                                 <input class="form-control" type="text" name="username" placeholder="Masukan Username">
+                                 <input class="form-control" type="text" name="username" value="{{ $user->username }}" >
+                             </div>
+                             <div class="form-group">
+                                 <label>Name</label>
+                                 <input class="form-control" type="text" name="name" value="{{ $user->name }}">
                              </div>
                              <div class="form-group">
                                  <label>Password</label>
-                                 <input class="form-control" type="password" name="password" placeholder="Masukan Password">
-                                 <i class="bi bi-eye-slash" id="togglePassword"></i>
+                                 <input class="form-control" type="password" name="password">
                              </div>
                              <div class="form-group">
-                                 <label>Konfirmasi Password</label>
-                                 <input class="form-control" type="password" name="konfirm_password" placeholder="Masukan Konfirmasi Password">
+                                 <label>Konfirm Password</label>
+                                 <input class="form-control" type="password" name="konfirm_password" >
                              </div>
-
-
                              <button type="submit" class="btn btn-default">Simpan</button>
                          </form>
                      </div>
-
                  </div>
                  <!-- /.row (nested) -->
              </div>

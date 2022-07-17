@@ -11,6 +11,7 @@ class BeritaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $berita=Berita::orderBy('id_berita','desc')->paginate(10);

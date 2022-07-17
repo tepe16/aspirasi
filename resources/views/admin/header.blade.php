@@ -64,15 +64,12 @@
 
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-user fa-fw"></i> secondtruth <b class="caret"></b>
+                            <i class="fa fa-user fa-fw"></i> {{ Auth::user()->name }} <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                            </li>
+
                             <li class="divider"></li>
-                            <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                             </li>
                         </ul>
                     </li>
@@ -96,7 +93,7 @@
                                         <a href="{{ route('tambah_user') }}">Tambah Data User</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('admin.create') }}">Tambah Data Berita</a>
+                                        <a href="{{ route('admins.create') }}">Tambah Data Berita</a>
                                     </li>
                                 </ul>
 
@@ -106,17 +103,17 @@
                                 <a href="#"><i class="fa fa-book fa-fw"></i> Lihat Data<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="#">Lihat Data User</a>
+                                        <a href="{{ route('admin.lihat_user')}}">Lihat Data User</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('admin.index') }}">Lihat Data Berita</a>
+                                        <a href="{{ route('admins.index')}}">Lihat Data Berita</a>
                                     </li>
                                 </ul>
 
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
-                                <a href="tables.html"><i class="fa fa-table fa-fw"></i>Lihat Data Aspirasi</a>
+                                <a href="{{ route('depan.create')}}"><i class="fa fa-table fa-fw"></i>Lihat Data Aspirasi</a>
                             </li>
                         </ul>
                     </div>
