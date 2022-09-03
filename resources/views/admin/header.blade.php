@@ -113,7 +113,10 @@
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
-                                <a href="{{ route('depan.create')}}"><i class="fa fa-table fa-fw"></i>Lihat Data Aspirasi</a>
+                                <a href="{{ route('depan.create')}}"><i class="fa fa-table fa-fw"></i>Lihat Data Komentar Aspirasi</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('masukan.index')}}"><i class="fa fa-calendar fa-fw"></i>Lihat Data Masukan Aspirasi</a>
                             </li>
                         </ul>
                     </div>

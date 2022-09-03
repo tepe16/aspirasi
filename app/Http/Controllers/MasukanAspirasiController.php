@@ -1,12 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Berita;
 use App\Models\News;
-use DB; //import fungsi query builder
 use Illuminate\Http\Request;
-
-class NewsController extends Controller
+use DB; //import fungsi query builder
+class MasukanAspirasiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +13,11 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $berita=Berita::orderBy('id_berita','desc')->paginate(10);
-        return view('depan.lihat_news',compact('berita'));
+        $news=DB::table('komentar_aspirasi')
+        ->get();
+
+
+        return view('admin.lihat_masukan_aspirasi')->with('news', $news);
     }
 
     /**
@@ -26,13 +27,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-
-        $news=DB::table('komentar_aspirasi')
-                      ->join('berita', 'komentar_aspirasi.id_berita', '=', 'berita.id_berita')
-                      ->get();
-
-
-        return view('admin.lihat_aspirasi')->with('news', $news);
+        return view('depan.masukan_aspirasi');
     }
 
     /**
@@ -43,7 +38,7 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-
+        
         $request->validate([
             'id_berita' => 'required',
             'nim' => 'required',
@@ -52,42 +47,31 @@ class NewsController extends Controller
             'ket_aspirasi' => 'required',
 
         ]);
-        $id=$request->id_berita;
+        
 
         News::create($request->all());
-        return redirect()->route('depan.show',$id)
+        return redirect()->route('masukan.create')
                         ->with('success','Komentar Aspirasi created successfully.');
-
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\News  $news
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(News $news ,$id)
+    public function show($id)
     {
-
-        $data=DB::table('komentar_aspirasi')
-                      ->rightjoin('berita', 'komentar_aspirasi.id_berita', '=', 'berita.id_berita')
-                      ->where('berita.id_berita', $id)
-                      ->get();
-
-
-        return view('depan.detail_news')->with('data', $data);
-
-
+        //
     }
-    
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\News  $news
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(News $news)
+    public function edit($id)
     {
         //
     }
@@ -96,10 +80,10 @@ class NewsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\News  $news
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, News $news)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -107,14 +91,14 @@ class NewsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\News  $news
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(News $news, $id)
+    public function destroy($id)
     {
         $news = News::find($id)->delete();
 
-        return redirect()->route('depan.create')
-                        ->with('success','Berita deleted successfully');
+        return redirect()->route('masukan.index')
+                        ->with('success','Masukan Komentar deleted successfully');
     }
 }

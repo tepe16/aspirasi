@@ -56,7 +56,6 @@
                                 <li class="current-list-item"><a href="{{route ('depan.home')}}">Home</a></li>
 								<li><a href="{{ route('depan.index') }}">News</a></li>
 								<li><a href="{{ route('index_contact') }}">Contact</a></li>
-								<li><a href="{{ route('masukan.create') }}">Masukan Aspirasi</a></li>
 								<li>
 
 								</li>

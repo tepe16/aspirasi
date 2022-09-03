@@ -54,7 +54,7 @@ class BeritaController extends Controller
 
         Berita::create($input);
 
-        return redirect()->route('admin.index')
+        return redirect()->route('admins.index')
                         ->with('success','Berita has been created successfully.');
     }
 
@@ -93,31 +93,15 @@ class BeritaController extends Controller
 
          $request->validate([
             'nama_berita' => 'required',
-            'foto' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            
             'tgl_berita' => 'required',
             'ket_berita' => 'required',
          ]);
         $berita = Berita::find($id);
 
-     if($request->foto != ''){
-          $path = 'images/';
-
-          //code for remove old file
-          if($berita->foto != ''  && $berita->foto != null){
-               $foto_old = $path.$berita->foto;
-               unlink($foto_old);
-          }
-
-          //upload new file
-          $foto = $request->foto;
-          $filename = $foto->getClientOriginalName();
-          $foto->move($path, $filename);
-
-          //for update in table
           $berita->update($request->all());
-     }
 
-        return redirect()->route('admin.index')
+        return redirect()->route('admins.index')
                         ->with('success','Berita has been update successfully.');
 
     }
@@ -132,7 +116,7 @@ class BeritaController extends Controller
     {
         $berita = Berita::find($id)->delete();
 
-        return redirect()->route('admin.index')
+        return redirect()->route('admins.index')
                         ->with('success','Berita deleted successfully');
 
     }

@@ -28,16 +28,11 @@
                              <div class="form-group">
                                  <label>Nama Berita</label>
                                  <input class="form-control" type="text" name="nama_berita" value="{{ $berita->nama_berita }}" placeholder="Masukan Nama Berita">
-                                 <input class="form-control" type="hidden" name="tgl_berita" value="{{now()->format('j F Y  h:i')}}" placeholder="Masukan Nama Berita" required/>
+                                 <input class="form-control" type="hidden" name="tgl_berita" value="{{now()->format('j F Y')}}" placeholder="Masukan Nama Berita" required/>
                              </div>
                              <div class="form-group">
                                  <label>Keterangan Berita</label>
                                  <textarea class="form-control" type="text" name="ket_berita"  placeholder="Masukan Keterangan berita">{{ $berita->ket_berita }}</textarea>
-                             </div>
-                             <div class="form-group">
-                                 <label>Gambar Berita</label>
-                                 <input class="form-control" type="file" name="foto">
-                                 <img src="/images/{{ $berita->foto }}" width="300px">
                              </div>
                              <button type="submit" class="btn btn-default">Simpan</button>
                          </form>

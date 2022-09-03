@@ -5,6 +5,10 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\KontakController;
+use App\Http\Controllers\HomeDepanController;
+use App\Http\Controllers\MasukanAspirasiController;
+use App\Http\Controllers\BalasanKomentarController;
+use App\Http\Controllers\BalasanKomentarDepanController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,5 +45,13 @@ Route::get('/', function () {
 });
 #news
 Route::resource('depan', NewsController::class);
+#home
+Route::get('home', [HomeDepanController::class, 'index'])->name('depan.home');
+
 #contact
 Route::get('index_contact', [KontakController::class, 'index_contact'])->name('index_contact');
+#masukan aspirasi
+Route::resource('masukan', MasukanAspirasiController::class);
+#balasan komentar
+Route::resource('balasan', BalasanKomentarController::class);
+Route::resource('balasan_depan', BalasanKomentarDepanController::class);;

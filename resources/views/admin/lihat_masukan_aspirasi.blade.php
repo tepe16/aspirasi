@@ -7,7 +7,7 @@
      <div class="col-lg-12">
          <div class="panel panel-default">
              <div class="panel-heading">
-                 Data Komentar Aspirasi
+                 Data Masukan Aspirasi
              </div>
              <!-- /.panel-heading -->
              <div class="panel-body">
@@ -23,7 +23,6 @@
                                  <th>No</th>
                                  <th>Nama Mahasiswa</th>
                                  <th>NIM</th>
-                                 <th>Nama Berita</th>
                                  <th>Tanggal Aspirasi</th>
                                  <th>Keterangan Aspirasi</th>
                                  <th>Action</th>
@@ -36,15 +35,10 @@
                                  <td>{{ $index + 1 }}</td>
                                  <td>{{ $a->nama_mahasiswa }}</td>
                                  <td>{{ $a->nim }}</td>
-                                 <td>{{ $a->nama_berita }}</td>
                                  <td>{{ $a->tgl_aspirasi }}</td>
                                  <td>{{ $a->ket_aspirasi }}</td>
                                  <td>
-                                    <form action="{{ route('depan.destroy',$a->id_komentar_aspirasi) }}" method="POST">
-
-                                        <a class="btn btn-primary" href="{{ route('balasan.edit',$a->id_komentar_aspirasi) }}">Balas Komentar</a>
-
-                                        <a class="btn btn-warning" href="{{ route('balasan.show',$a->id_komentar_aspirasi) }}">Detail Komentar</a>
+                                    <form action="{{ route('masukan.destroy',$a->id_komentar_aspirasi) }}" method="POST">
 
                                         @csrf
                                         @method('DELETE')
